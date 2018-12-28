@@ -3,7 +3,8 @@
 .app {
   background: linear-gradient(-30deg, #2c3d61, #2c3d61);
   padding: 30px;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100%;
   position: relative;
 }
 
@@ -20,6 +21,7 @@
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+  word-wrap: break-word
 }
 
 .todo {
@@ -37,6 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 
 span {
@@ -46,6 +49,11 @@ span {
 
 .todo:hover span:not(:hover) {
   opacity: 0.5;
+}
+
+.todo span {
+  word-wrap: break-word;
+  max-width: 325px;
 }
 
 .input-todo {
@@ -58,7 +66,7 @@ span {
   background: #ffffff;
   color: #2c3d61;
   width: 98%;
-  height: 45px;
+  height: 60px;
   margin-top: 20px;
   margin-right: 5px;
   border-radius: 5px;
@@ -120,7 +128,7 @@ span {
   border-radius: 5px;
 
   position: relative;
-  background: linear-gradient(75deg, #6d78ff, #6d78ff);
+  background: linear-gradient(75deg, #6671eb, #6d78ff);
   z-index: 50;
 
   color: white;
@@ -156,8 +164,7 @@ span {
   width: 40px;
   margin-right: 10px;
   border-radius: 5px;
-
-  background: #ff4c9f;
+  background: linear-gradient(90deg, #f42d8a, #ff4c9f);
   color: white;
 
   border: none;
@@ -173,7 +180,7 @@ span {
   top: 0rem;
   left: 0;
   filter: blur(0.4rem);
-  opacity: 0.9;
+  opacity: 0.7;
   z-index: -1;
 }
 
