@@ -1,28 +1,41 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import TodoForm from './components/TodoForm';
+import Todo from './components/Todo';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import data from './assets/data';
 
+const App = () => {
+	const [ todos, setTodos ] = useState(data); // Array of "To-Do" objects
+	// "todos" is the state
+	// "setTodos" is the setState for "todos"
+	const addTodo = (text) => {
+		const newTodos = [ ...todos, { text } ];
+		setTodos(newTodos);
+	};
+
+	const completeTodo = (index) => {
+		const newTodos = [ ...todos ];
+		newTodos[index].isCompleted = !newTodos[index].isCompleted;
+
+		setTodos(newTodos);
+	};
+
+	const removeTodo = (index) => {
+		const newTodos = [ ...todos ];
+		newTodos.splice(index, 1);
+		setTodos(newTodos);
+	};
+
+	return (
+		<div className="app">
+			<div className="todo-list">
+				{todos.map((todo, index) => (
+					<Todo key={index} index={index} todo={todo} completeTodo={completeTodo} removeTodo={removeTodo} />
+				))}
+				<TodoForm addTodo={addTodo} />
+			</div>
+		</div>
+	);
+};
 export default App;
